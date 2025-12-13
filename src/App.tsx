@@ -1,10 +1,19 @@
-import React from "react";
 import "./App.css";
+import Demo from "./Components/Demo";
+import Hero from "./Components/Hero";
 
 function App() {
   return (
     <div>
-      <h1 className="font-mono">Ahmad Altal Frontend Developer and UI/UX Designer</h1>
+      <main>
+        <div>
+          <div className="gradient"></div>
+          <div className="app">
+            <Hero />
+            <Demo />
+          </div>
+        </div>
+      </main>
     </div>
   );
 }
