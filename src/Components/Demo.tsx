@@ -193,26 +193,35 @@ function Demo() {
               <div
                 key={item.id}
                 onClick={() => setArticle(item)}
-                className={`link_card group hover:bg-blue-50 relative transition-colors cursor-pointer ${
+                className={`link_card group hover:bg-blue-50 transition-colors cursor-pointer ${
                   article.id === item.id ? "bg-blue-50 border-blue-300" : ""
                 }`}
               >
-                <div className="flex items-center gap-2 pr-8">
-                  <div className="flex items-center gap-2 flex-1 min-w-0">
-                    <img
-                      src={copy}
-                      alt="copy_icon"
-                      className="w-4 h-4 opacity-50 hover:opacity-100"
-                      onClick={(e: MouseEvent) => copyToClipboard(item.url, e)}
-                      title="Copy URL"
-                    />
-                    <p className="flex-1 text-blue-700 font-medium text-sm truncate">
-                      {item.url}
-                    </p>
-                  </div>
+                <div className="flex items-center gap-2 w-full overflow-hidden">
+                  <img
+                    src={copy}
+                    alt="copy_icon"
+                    className="w-4 h-4 shrink-0 opacity-50 hover:opacity-100"
+                    onClick={(e: MouseEvent) => {
+                      e.stopPropagation();
+                      copyToClipboard(item.url, e);
+                    }}
+                    title="Copy URL"
+                  />
+
+                  <p
+                    className="flex-1 min-w-0 text-blue-700 font-medium text-sm truncate"
+                    title={item.url}
+                  >
+                    {item.url}
+                  </p>
+
                   <button
-                    onClick={(e: MouseEvent) => deleteArticle(item.id, e)}
-                    className="absolute right-2 top-1/2 transform -translate-y-1/2 text-gray-400 hover:text-red-500 cursor-pointer p-1 rounded-full hover:bg-red-50"
+                    onClick={(e: MouseEvent) => {
+                      e.stopPropagation();
+                      deleteArticle(item.id, e);
+                    }}
+                    className="shrink-0 text-gray-400 hover:text-red-500 p-1 rounded-full hover:bg-red-50 transition-colors"
                     title="Delete article"
                   >
                     <svg
@@ -259,11 +268,9 @@ function Demo() {
             </div>
           </div>
         ) : article.summary ? (
-          <div className="mt-8 p-4 bg-gray-50 dark:bg-gray-900 rounded-lg border border-gray-200 dark:border-gray-700">
+          <div className="mt-8 p-4 bg-white rounded-lg border border-gray-400 ">
             <div className="flex justify-between items-center mb-3">
-              <h3 className="text-lg font-semibold mb-2 text-gray-800 dark:text-gray-200">
-                Article Summary
-              </h3>
+              <h3 className="text-lg font-semibold mb-2  ">Article Summary</h3>
               <button
                 onClick={() =>
                   copyToClipboard(article.summary, {
@@ -291,9 +298,7 @@ function Demo() {
               </button>
             </div>
             <div className="bg-white p-4 rounded border border-amber-300">
-              <p className="text-gray-700 dark:text-gray-300 font-sans">
-                {article.summary}
-              </p>
+              <p className="text-gray-700 font-sans">{article.summary}</p>
             </div>
             <div className="mt-3 text-sm text-gray-500 text-center">
               <span>{new Date(article.timestamp).toLocaleString()}</span>
