@@ -1,10 +1,7 @@
-import logo from "../assets/logo.svg";
-
 function Hero() {
   return (
     <header className="w-full flex justify-center items-center flex-col font-mono">
       <nav className="flex justify-between items-center w-full mb-10 pt-3">
-        <img src={logo} alt="Logo" className="object-contain w-28" />
         <a
           href="https://github.com/ALTal77/AI-Summarizer"
           target="_blank"

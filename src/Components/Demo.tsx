@@ -142,7 +142,7 @@ function Demo() {
             setArticle({ ...article, url: e.target.value })
           }
           required
-          className="peer url_input"
+          className="peer url_input bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 border border-gray-300 dark:border-gray-600"
           disabled={isLoading}
         />
         <button
@@ -254,9 +254,11 @@ function Demo() {
             </div>
           </div>
         ) : article.summary ? (
-          <div className="p-4 bg-gray-50 rounded-lg border border-gray-200 mb-10">
+          <div className="mt-8 p-4 bg-gray-50 dark:bg-gray-900 rounded-lg border border-gray-200 dark:border-gray-700">
             <div className="flex justify-between items-center mb-3">
-              <h3 className="text-lg font-semibold">Article Summary</h3>
+              <h3 className="text-lg font-semibold mb-2 text-gray-800 dark:text-gray-200">
+                Article Summary
+              </h3>
               <button
                 onClick={() =>
                   copyToClipboard(article.summary, {
@@ -284,7 +286,7 @@ function Demo() {
               </button>
             </div>
             <div className="bg-white p-4 rounded border border-amber-300">
-              <p className="text-gray-700 leading-relaxed whitespace-pre-line font-sans">
+              <p className="text-gray-700 dark:text-gray-300 font-sans">
                 {article.summary}
               </p>
             </div>
