@@ -138,11 +138,16 @@ function Demo() {
           type="url"
           placeholder="Enter a URL (e.g., https://en.wikipedia.org/wiki/Artificial_intelligence)"
           value={article.url}
+          inputMode="url"
+          autoCapitalize="none"
+          autoCorrect="off"
           onChange={(e: ChangeEvent<HTMLInputElement>) =>
             setArticle({ ...article, url: e.target.value })
           }
           required
-          className="peer url_input bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 border border-gray-300 dark:border-gray-600"
+          className="peer url_input bg-white dark:bg-gray-800 text-gray-900 border border-gray-300 dark:border-gray-600
+             placeholder:text-xs sm:placeholder:text-xs
+             placeholder:truncate "
           disabled={isLoading}
         />
         <button
@@ -247,7 +252,7 @@ function Demo() {
               </p>
               <div className="mt-4 w-full bg-gray-200 rounded-full h-2">
                 <div
-                  className="orange_gradient h-2 rounded-full animate-pulse"
+                  className="bg-amber-600 h-2 rounded-full animate-pulse"
                   style={{ width: "60%" }}
                 ></div>
               </div>
