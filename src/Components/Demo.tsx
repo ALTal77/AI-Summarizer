@@ -54,7 +54,7 @@ function Demo() {
 
     setIsLoading(true);
     const apiUrl = `https://article-extractor-and-summarizer.p.rapidapi.com/summarize?url=${encodeURIComponent(
-      article.url
+      article.url,
     )}&lang=en&engine=2`;
     const options = {
       method: "GET",
@@ -85,8 +85,8 @@ function Demo() {
           errorData.error?.includes("Failed extracting text")
             ? "This page doesn't have readable text content. Try a news article, blog post, or Wikipedia page."
             : response.status === 503
-            ? "Service temporarily unavailable. Please try again later."
-            : `API Error: ${response.status}`
+              ? "Service temporarily unavailable. Please try again later."
+              : `API Error: ${response.status}`,
         );
         console.error("API Error:", response.status, result);
       }

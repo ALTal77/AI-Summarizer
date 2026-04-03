@@ -9,7 +9,7 @@ export const articleApi = createApi({
       headers.set("x-rapidapi-key", RapidApiKey);
       headers.set(
         "x-rapidapi-host",
-        "article-extractor-and-summarizer.p.rapidapi.com"
+        "article-extractor-and-summarizer.p.rapidapi.com",
       );
       return headers;
     },
@@ -27,5 +27,3 @@ export const articleApi = createApi({
     }),
   }),
 });
-
-export const { useLazyGetSummaryQuery } = articleApi;
